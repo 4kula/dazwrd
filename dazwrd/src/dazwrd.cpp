@@ -1,17 +1,17 @@
-#include "ExampleAIModule.h"
+#include "dazwrd.h"
 #include <iostream>
 
 using namespace BWAPI;
 using namespace Filter;
 
-void ExampleAIModule::onStart()
+void dazwrd::onStart()
 {
   // Hello World!
   Broodwar->sendText("Hello world!");
 
   // Print the map name.
   // BWAPI returns std::string when retrieving a string, don't forget to add .c_str() when printing!
-  Broodwar << "The map is " << Broodwar->mapName() << "!" << std::endl;
+  Broodwar << "Map Name [ " << Broodwar->mapName() << " ]" << std::endl;
 
   // Enable the UserInput flag, which allows us to control the bot and type messages.
   Broodwar->enableFlag(Flag::UserInput);
@@ -29,7 +29,7 @@ void ExampleAIModule::onStart()
 
     // Announce the players in the replay
     Broodwar << "The following players are in this replay:" << std::endl;
-    
+
     // Iterate all the players in the game using a std:: iterator
     Playerset players = Broodwar->getPlayers();
     for(auto p : players)
@@ -225,7 +225,7 @@ void ExampleAIModule::onNukeDetect(BWAPI::Position target)
     // if so, print the location of the nuclear strike target
     Broodwar << "Nuclear Launch Detected at " << target << std::endl;
   }
-  else 
+  else
   {
     // Otherwise, ask other players where the nuke is!
     Broodwar->sendText("Where's the nuke?");
