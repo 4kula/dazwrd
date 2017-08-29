@@ -5,10 +5,13 @@
 using namespace BWAPI;
 using namespace Filter;
 
+// execute at the start of a match
 void dazwrd::onStart()
 {
-  // Hello World!
-  Broodwar->sendText("Hello world!");
+  // helper class that will surely be used
+  TemplarArchives archive;
+  
+  archive->_p("Hello world!");
 
   // Print the map name.
   // BWAPI returns std::string when retrieving a string, don't forget to add .c_str() when printing!
