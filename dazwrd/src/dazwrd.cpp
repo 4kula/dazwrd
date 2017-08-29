@@ -1,5 +1,6 @@
 #include "dazwrd.h"
 #include <iostream>
+#include "templar_archives.h"
 
 using namespace BWAPI;
 using namespace Filter;

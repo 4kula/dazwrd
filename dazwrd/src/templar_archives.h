@@ -1,6 +1,8 @@
 #include <iostream>
 #include <string>
 
+using namespace BWAPI;
+
 // Houses all of the reuseable functions this bot will need
 class TemplarArchives {
     public:
