@@ -7,5 +7,5 @@ using namespace BWAPI;
 class TemplarArchives {
   public:
     // say something as the bot
-      void _p(string);
+    void _p(string);
 }
