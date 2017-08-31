@@ -8,8 +8,12 @@ using namespace Filter;
 // execute at the start of a match
 void dazwrd::onStart()
 {
+  // necesities
+  TemplarArchives archive;
+
   archive->_p('Hello world!');
 
+  // no need for special treatment for replays?
   if ( Broodwar->isReplay() )
   {
     archive->_p('Looks like this is a reply, no need for me to stick around ...');
@@ -19,8 +23,6 @@ void dazwrd::onStart()
   {
     // command optimization set
     Broodwar->setCommandOptimizationLevel(2);
-    // necesities
-    TemplarArchives archive;
 
     // sitrep
     // -> win overall with race & matchup rate
