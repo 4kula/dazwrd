@@ -7,5 +7,9 @@ using namespace BWAPI;
 class TemplarArchives {
   public:
     // say something as the bot
-    void _p(string);
+    static void _p(string);
+
+  public:
+    // return desired build information depending on option given
+    static void _buildInfo(BWAPI:Unit, int);
 }

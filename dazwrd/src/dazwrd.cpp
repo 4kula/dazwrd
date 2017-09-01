@@ -49,8 +49,10 @@ void ExampleAIModule::onEnd(bool isWinner)
   // Called when the game ends
   if ( isWinner )
   {
-    // Log your win here!
+    // store in db the winning map and matchup status
   }
+  // regardless of win or lose:
+  // gather more info such as time taken and resources and such?
 }
 
 void ExampleAIModule::onFrame()
@@ -267,14 +269,8 @@ void ExampleAIModule::onUnitMorph(BWAPI::Unit unit)
 {
   if ( Broodwar->isReplay() )
   {
-    // if we are in a replay, then we will print out the build order of the structures
-    if ( unit->getType().isBuilding() && !unit->getPlayer()->isNeutral() )
-    {
-      int seconds = Broodwar->getFrameCount()/24;
-      int minutes = seconds/60;
-      seconds %= 60;
-      Broodwar->sendText("%.2d:%.2d: %s morphs a %s", minutes, seconds, unit->getPlayer()->getName().c_str(), unit->getType().c_str());
-    }
+    // using the archive's build info function, we can see build order & timings
+    archive._buildInfo(unit);
   }
 }
 
