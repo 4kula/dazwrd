@@ -10,7 +10,7 @@ void dazwrd::onStart()
 {
   // helper class that will surely be used
   TemplarArchives archive;
-  
+
   archive->_p("Hello world!");
 
   // Print the map name.
@@ -54,12 +54,13 @@ void dazwrd::onStart()
 
 }
 
-void ExampleAIModule::onEnd(bool isWinner)
+void dazwrd::onEnd(bool isWinner)
 {
   // Called when the game ends
   if ( isWinner )
   {
-    // Log your win here!
+    // insert into the sqlite DB
+    // display what performance's strengths & weaknesses?
   }
 }
 
