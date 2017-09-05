@@ -8,44 +8,39 @@ using namespace Filter;
 // execute at the start of a match
 void dazwrd::onStart()
 {
-  // helper class that will surely be used
+  // necesities
   TemplarArchives archive;
+<<<<<<< HEAD
 
   archive->_p("Hello world!");
+=======
+>>>>>>> 4b0d9910177a6e9aa348c42756fd2548cc602efd
 
-  // Print the map name.
-  // BWAPI returns std::string when retrieving a string, don't forget to add .c_str() when printing!
-  Broodwar << "Map Name [ " << Broodwar->mapName() << " ]" << std::endl;
+  archive->_p('Hello world!');
 
-  // Enable the UserInput flag, which allows us to control the bot and type messages.
-  Broodwar->enableFlag(Flag::UserInput);
-
-  // Uncomment the following line and the bot will know about everything through the fog of war (cheat).
-  //Broodwar->enableFlag(Flag::CompleteMapInformation);
-
-  // Set the command optimization level so that common commands can be grouped
-  // and reduce the bot's APM (Actions Per Minute).
-  Broodwar->setCommandOptimizationLevel(2);
-
-  // Check if this is a replay
+  // no need for special treatment for replays?
   if ( Broodwar->isReplay() )
   {
-
-    // Announce the players in the replay
-    Broodwar << "The following players are in this replay:" << std::endl;
-
-    // Iterate all the players in the game using a std:: iterator
-    Playerset players = Broodwar->getPlayers();
-    for(auto p : players)
-    {
-      // Only print the player if they are not an observer
-      if ( !p->isObserver() )
-        Broodwar << p->getName() << ", playing as " << p->getRace() << std::endl;
-    }
-
+    archive->_p('Looks like this is a reply, no need for me to stick around ...');
   }
-  else // if this is not a replay
+  // normal execution
+  else
   {
+    // command optimization set
+    Broodwar->setCommandOptimizationLevel(2);
+
+    // sitrep
+    // -> win overall with race & matchup rate
+    // -> win overall on this map with race & matchup rate
+    //Broodwar->mapName()
+
+    // based on performance & matchup stats -> enable more options ot help the bot?
+    // -> how to determine if we need to enable user control?
+    // Enable the UserInput flag, which allows us to control the bot and type messages.
+    //Broodwar->enableFlag(Flag::UserInput);
+    // Uncomment the following line and the bot will know about everything through the fog of war (cheat).
+    //Broodwar->enableFlag(Flag::CompleteMapInformation);
+
     // Retrieve you and your enemy's races. enemy() will just return the first enemy.
     // If you wish to deal with multiple enemies then you must use enemies().
     if ( Broodwar->enemy() ) // First make sure there is an enemy
@@ -61,7 +56,10 @@ void dazwrd::onEnd(bool isWinner)
   {
     // insert into the sqlite DB
     // display what performance's strengths & weaknesses?
+    // store in db the winning map and matchup status
   }
+  // regardless of win or lose:
+  // gather more info such as time taken and resources and such?
 }
 
 void ExampleAIModule::onFrame()
@@ -278,14 +276,8 @@ void ExampleAIModule::onUnitMorph(BWAPI::Unit unit)
 {
   if ( Broodwar->isReplay() )
   {
-    // if we are in a replay, then we will print out the build order of the structures
-    if ( unit->getType().isBuilding() && !unit->getPlayer()->isNeutral() )
-    {
-      int seconds = Broodwar->getFrameCount()/24;
-      int minutes = seconds/60;
-      seconds %= 60;
-      Broodwar->sendText("%.2d:%.2d: %s morphs a %s", minutes, seconds, unit->getPlayer()->getName().c_str(), unit->getType().c_str());
-    }
+    // using the archive's build info function, we can see build order & timings
+    archive._buildInfo(unit);
   }
 }
 
