@@ -10,11 +10,6 @@ void dazwrd::onStart()
 {
   // necesities
   TemplarArchives archive;
-<<<<<<< HEAD
-
-  archive->_p("Hello world!");
-=======
->>>>>>> 4b0d9910177a6e9aa348c42756fd2548cc602efd
 
   archive->_p('Hello world!');
 
