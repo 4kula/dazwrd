@@ -10,3 +10,6 @@ meta:
     - how fast we can destroy and army with value of x
 - mobility?
 - hit & run?
+
+- when it comes to attacking, is it possible to use pattern based when it comes to attacking
+    - flanking maneuvers possible? or is it just too complex?
